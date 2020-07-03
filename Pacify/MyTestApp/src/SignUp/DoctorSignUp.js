@@ -23,36 +23,39 @@ const DATA = [
   {id: '7', placeholder: 'Sign Up', type: 'button'},
 ];
 
-function Item({_item, props}) {
-  if (_item.type === 'TextInput') {
-    return (
-      <TextInput
-        style={styles.textInputStyle}
-        placeholder={_item.placeholder}></TextInput>
-    );
-  } else if (_item.type === 'button') {
-    return (
-      <TouchableOpacity onPress={() => props.navigation.navigate('selectarea')}>
-        <LinearGradient
-          style={styles.buttonStyle}
-          colors={[userColor.backgroundColor, userColor.light_blue]}
-          start={{x: 0, y: 0}}
-          end={{x: 1, y: 0}}>
-          <Text
-            style={{
-              fontFamily: 'Raleway',
-              fontWeight: 'bold',
-              fontSize: normalize(16),
-              color: 'rgba(255, 255, 255, 255)',
-            }}>
-            {_item.placeholder}
-          </Text>
-        </LinearGradient>
-      </TouchableOpacity>
-    );
+class Item extends React {
+  render() {
+    const {_item, props} = this.props;
+    if (_item.type === 'TextInput') {
+      return (
+        <TextInput
+          style={styles.textInputStyle}
+          placeholder={_item.placeholder}></TextInput>
+      );
+    } else if (_item.type === 'button') {
+      return (
+        <TouchableOpacity
+          onPress={() => props.navigation.navigate('selectarea')}>
+          <LinearGradient
+            style={styles.buttonStyle}
+            colors={[userColor.backgroundColor, userColor.light_blue]}
+            start={{x: 0, y: 0}}
+            end={{x: 1, y: 0}}>
+            <Text
+              style={{
+                fontFamily: 'Raleway',
+                fontWeight: 'bold',
+                fontSize: normalize(16),
+                color: 'rgba(255, 255, 255, 255)',
+              }}>
+              {_item.placeholder}
+            </Text>
+          </LinearGradient>
+        </TouchableOpacity>
+      );
+    }
   }
 }
-
 export default function App(props) {
   return (
     <View style={styles.container}>
