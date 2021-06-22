@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "415633290918",
+    "project_id": "pacify-2e77a",
+    "storage_bucket": "pacify-2e77a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:415633290918:android:b7167eed2110e65a28e667",
+        "android_client_info": {
+          "package_name": "com.pacify"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "415633290918-213tlv72jqark87qn3de0sommb5o4j9l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pacify",
+            "certificate_hash": "fc1e19d0906f2e82ae398d05cc16e26931e595e7"
+          }
+        },
+        {
+          "client_id": "415633290918-bask4hu2781duqj6ebeho3bfqk0654id.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyW69s6icgIzRRGpFeSdhBhDug1COYFT0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "415633290918-bask4hu2781duqj6ebeho3bfqk0654id.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
