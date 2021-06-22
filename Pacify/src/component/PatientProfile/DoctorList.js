@@ -71,9 +71,6 @@ function DoctorList(props) {
                 : require('../../Images/profile.jpg')
             }
             style={styles.ImageStyle}
-            PlaceholderContent={
-              <ActivityIndicatorComponent size="small" color="green" />
-            }
           />
         </View>
         <View style={{flex: 3}}>
@@ -185,6 +182,8 @@ function DoctorList(props) {
         item.uid,
         'Request',
         JSON.stringify(userDetails),
+        `${userDetails.name} has book an appointment.`,
+        'Appointment',
       );
       alert('Booking Successfull. Please wait for confirmation.');
     }

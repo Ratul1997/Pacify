@@ -17,28 +17,29 @@ import normalize from '../../constants/normalize';
 import {connect} from 'react-redux';
 import messaging from '@react-native-firebase/messaging';
 
+import PushNotification from 'react-native-push-notification';
 import {Image} from 'react-native-elements';
 import {doctorActions} from '../../actions';
 import ActivityIndicatorComponent from '../../common/ActivityIndicatorComponent';
 function DoctorProfile({navigation, userDetails}) {
   useEffect(() => {
-    messaging().subscribeToTopic(userDetails.uid);
+    PushNotification.subscribeToTopic(userDetails.uid);
   }, []);
-  useEffect(() => {
-    const unsubscribe = messaging().onMessage(async remoteMessage => {
-      // alert(remoteMessage.data.content);
+  // useEffect(() => {
+  //   const unsubscribe = messaging().onMessage(async remoteMessage => {
+  //     // alert(remoteMessage.data.content);
 
-      const {content} = remoteMessage.data;
-      const requestUserInfo = JSON.parse(remoteMessage.data.type);
-      notifications(
-        requestUserInfo,
-        remoteMessage.sentTime,
-        remoteMessage.data.content,
-      );
-    });
+  //     const {content} = remoteMessage.data;
+  //     const requestUserInfo = JSON.parse(remoteMessage.data.type);
+  //     notifications(
+  //       requestUserInfo,
+  //       remoteMessage.sentTime,
+  //       remoteMessage.data.content,
+  //     );
+  //   });
 
-    return unsubscribe;
-  }, []);
+  //   return unsubscribe;
+  // }, []);
   const notifications = async (requestUserInfo, time, content) => {
     let msg = '';
 

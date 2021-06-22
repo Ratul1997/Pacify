@@ -30,6 +30,8 @@ function Payment({navigation, route, userDetails}) {
         item.uid,
         'Paid',
         JSON.stringify(userDetails),
+        `${userDetails.name} has paid appointment fees.`,
+        'Appointment',
       );
       navigation.goBack();
     }

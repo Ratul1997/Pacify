@@ -41,6 +41,8 @@ function WaitingList({navigation, userDetails}) {
               item.uid,
               'Approved',
               JSON.stringify(userDetails),
+              `${userDetails.name} has approved appointment.`,
+              'Appointment',
             );
             alert('Please wait for confirming payment');
           }
@@ -72,6 +74,8 @@ function WaitingList({navigation, userDetails}) {
               item.uid,
               'Delete',
               JSON.stringify(userDetails),
+              `${userDetails.name} has cancelled appointment.`,
+              'Appointment',
             );
           }
         },

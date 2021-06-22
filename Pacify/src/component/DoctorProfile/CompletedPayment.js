@@ -34,6 +34,8 @@ function CompletedPayment({navigation, userDetails}) {
             item.uid,
             'Call',
             JSON.stringify({...userDetails, key: item.key}),
+            `${userDetails.name} has started appointment.`,
+            'Appointment',
           );
           if (error) {
             alert('Something Went Wrong');

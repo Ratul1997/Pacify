@@ -17,6 +17,8 @@ import {connect} from 'react-redux';
 import messaging from '@react-native-firebase/messaging';
 import {userConstants} from '../../constants/userConstants';
 import OnCall from './OnCall';
+
+import PushNotification from 'react-native-push-notification';
 import {patientActions} from '../../actions';
 
 const Data = [
@@ -53,31 +55,32 @@ const Data = [
 ];
 function Home({navigation, userDetails, startCall, endCall, requestedUser}) {
   useEffect(() => {
-    messaging().subscribeToTopic(userDetails.uid);
+    PushNotification.subscribeToTopic(userDetails.uid);
   }, []);
-  console.log(requestedUser)
-  useEffect(() => {
-    const unsubscribe = messaging().onMessage(async remoteMessage => {
-      // alert(remoteMessage.data.content);
+  console.log(requestedUser);
+  // useEffect(() => {
+  //   const unsubscribe = messaging().onMessage(async remoteMessage => {
+  //     // alert(remoteMessage.data.content);
+  //     if (remoteMessage.data.type) {
+  //       const requestUserInfo = JSON.parse(remoteMessage.data.type);
+  //       notifications(
+  //         requestUserInfo,
+  //         remoteMessage.sentTime,
+  //         remoteMessage.data.content,
+  //       );
+  //       switch (remoteMessage.data.content) {
+  //         case 'Call':
+  //           return startCall(requestUserInfo);
+  //         case 'End':
+  //           return endCall();
+  //         default:
+  //           return;
+  //       }
+  //     }
+  //   });
 
-      const requestUserInfo = JSON.parse(remoteMessage.data.type);
-      notifications(
-        requestUserInfo,
-        remoteMessage.sentTime,
-        remoteMessage.data.content,
-      );
-      switch (remoteMessage.data.content) {
-        case 'Call':
-          return startCall(requestUserInfo);
-        case 'End':
-          return endCall();
-        default:
-          return;
-      }
-    });
-
-    return unsubscribe;
-  }, []);
+  //   return unsubscribe;
+  // }, []);
 
   const notifications = async (requestUserInfo, time, content) => {
     let msg = '';
@@ -94,13 +97,13 @@ function Home({navigation, userDetails, startCall, endCall, requestedUser}) {
       msg = 'has cancelled your appointment';
     }
 
-    const {error} = await patientActions.storeNotification(
-      userDetails,
-      time,
-      requestUserInfo,
-      msg,
-    );
-    console.log(error);
+    // const {error} = await patientActions.storeNotification(
+    //   userDetails,
+    //   time,
+    //   requestUserInfo,
+    //   msg,
+    // );
+    // console.log(error);
   };
   const onJoinCall = () => {
     navigation.navigate('VideoCall', {

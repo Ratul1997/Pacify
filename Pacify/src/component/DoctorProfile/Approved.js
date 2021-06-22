@@ -41,6 +41,8 @@ function Approved({navigation, userDetails}) {
               item.uid,
               'Delete',
               JSON.stringify(userDetails),
+              `${userDetails.name} has cancelled appointment.`,
+              'Appointment',
             );
           }
         },

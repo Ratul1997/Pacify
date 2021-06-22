@@ -110,19 +110,22 @@ async function storeOnHistory(patientDetails, doctorDetails, key) {
   }
 }
 
-async function sendNotification(topicName, msg, type) {
+async function sendNotification(topicName, msg, type, body, title) {
   try {
     const url = 'https://pacify.diligite.com/' + 'send-notification';
     axios.post(url, {
       topicName: topicName,
       msg: msg,
       type: type,
+      body: body,
+      title: title,
     });
     return {};
   } catch (error) {
     return {error: error};
   }
 }
+
 async function storeNotification(userDetails, time, requestedUser, content) {
   try {
     await firestore()

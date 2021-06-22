@@ -225,6 +225,8 @@ function VideoCall(props) {
         patientDetails.uid,
         'End',
         JSON.stringify(userDetails),
+        `${userDetails.name} has ended appointment.`,
+        'Appointment',
       );
       if (error) {
         alert('Something Went Wrong');
@@ -293,7 +295,7 @@ function VideoCall(props) {
       />
     );
   };
- 
+
   const renderChannelNameView = () => {
     return (
       <>

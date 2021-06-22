@@ -24,8 +24,9 @@ import {Provider} from 'react-redux';
 import messaging from '@react-native-firebase/messaging';
 
 import {store, pReducer} from './src/reducers';
+import PushController from './src/PushController';
 const App = () => {
-   useEffect(() => {
+  useEffect(() => {
     const unsubscribe = messaging().onMessage(async remoteMessage => {
       // alert(remoteMessage.data.content);
 
@@ -39,6 +40,7 @@ const App = () => {
       <StatusBarComponent />
       <Provider store={store}>
         <PersistGate persistor={persistStore(store)}>
+          <PushController />
           <NavigationContainer>
             <AppNavigation />
           </NavigationContainer>
