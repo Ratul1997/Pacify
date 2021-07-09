@@ -24,10 +24,12 @@ const Data = [
   {
     name: 'Age',
     value: '24yrs',
+    key: 'age',
   },
   {
     name: 'Blood',
     value: 'AB',
+    key: 'blood_group',
   },
   {
     name: 'Profession',
@@ -51,7 +53,9 @@ const formatData = (data, numColumns) => {
 };
 
 function PatientAccount({navigation, userDetails, requestedUser}) {
-  console.log(requestedUser, 'asas');
+  const getDataAccordingToKey = key => {
+    return userDetails[key];
+  };
   const renderItem = ({item, index}) => {
     return (
       <View style={styles.item}>
@@ -67,7 +71,7 @@ function PatientAccount({navigation, userDetails, requestedUser}) {
             fontFamily: 'Gotham Rounded',
             color: colorCode.light_gray,
           }}>
-          {item.value}
+          {getDataAccordingToKey(item.key)}
         </Text>
       </View>
     );
@@ -150,6 +154,22 @@ function PatientAccount({navigation, userDetails, requestedUser}) {
             {userDetails.name}
           </Text>
 
+          <TouchableOpacity
+            style={{
+              position: 'absolute',
+              top: normalize(70),
+              right: '35%',
+              backgroundColor: colorCode.backgroundColor,
+              height: normalize(25),
+              width: normalize(25),
+              borderRadius: 50,
+              justifyContent: 'center',
+              alignItems: 'center',
+              alignSelf: 'center',
+            }}
+            onPress={() => navigation.navigate('EditProfilePat')}>
+            <MaterialIcon name="edit" size={normalize(15)} color="white" />
+          </TouchableOpacity>
           <FlatList
             style={{
               marginTop: normalize(7),

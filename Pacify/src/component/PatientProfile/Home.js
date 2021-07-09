@@ -55,6 +55,7 @@ const Data = [
 ];
 function Home({navigation, userDetails, startCall, endCall, requestedUser}) {
   useEffect(() => {
+    console.log(userDetails.uid)
     PushNotification.subscribeToTopic(userDetails.uid);
   }, []);
   console.log(requestedUser);

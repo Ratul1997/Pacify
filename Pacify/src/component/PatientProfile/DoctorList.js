@@ -153,10 +153,10 @@ function DoctorList(props) {
           /* ... */
           // console.log(querySnapshot.size);
 
-          const doc = querySnapshot.docs.map(doc => {
+          const doctors = querySnapshot.docs.map(doc => {
             return {...doc.data(), key: doc.id};
           });
-          setDoctorList(doc);
+          setDoctorList(doctors);
         },
         function(error) {
           console.log(error);
@@ -168,6 +168,7 @@ function DoctorList(props) {
     setModal(false);
   };
   const onNavigate = async () => {
+    console.log('sdsd', item);
     setModal(false);
     const date = new Date();
     const {error} = await userBookingActions.bookDoctor(

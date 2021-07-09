@@ -40,7 +40,9 @@ const DATA = [
     secureTextEntry: true,
   },
   {id: '6', placeholder: 'Profession', type: 'TextInput', key: 'profession'},
-  {id: '7', placeholder: 'Sign Up', type: 'button'},
+  {id: '7', placeholder: 'Age', type: 'TextInput', key: 'age'},
+  {id: '8', placeholder: 'Blood Group', type: 'TextInput', key: 'blood_group'},
+  {id: '9', placeholder: 'Sign Up', type: 'button'},
 ];
 
 function PatientSignUp({
@@ -58,6 +60,8 @@ function PatientSignUp({
     password: '',
     confirm_password: '',
     profession: '',
+    age: '',
+    blood_group: '',
   };
   console.log(userDetails);
   const [profileInformation, setProfileInformation] = useState(initialState);
@@ -177,6 +181,7 @@ function PatientSignUp({
           style={styles.textInputStyle}
           placeholder={item.placeholder}
           value={setValue(item.key)}
+          secureTextEntry={item.secureTextEntry}
           onChangeText={onChangeState(item)}></TextInput>
       );
     } else if (item.type === 'button') {

@@ -6,6 +6,7 @@ export const doctorActions = {
   storeOnHistory,
   sendNotification,
   storeNotification,
+  updateUserInfo,
 };
 async function getPatients(uid, status) {
   console.log(uid, status);
@@ -120,6 +121,19 @@ async function sendNotification(topicName, msg, type, body, title) {
       body: body,
       title: title,
     });
+    return {};
+  } catch (error) {
+    return {error: error};
+  }
+}
+async function updateUserInfo(userDetails) {
+  try {
+    await firestore()
+      .collection('Users')
+      .doc(userDetails.uid)
+      .update({
+        ...userDetails,
+      });
     return {};
   } catch (error) {
     return {error: error};

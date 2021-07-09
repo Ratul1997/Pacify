@@ -19,14 +19,18 @@ import normalize from './constants/normalize';
 import {userAuthActions} from './actions';
 import {userConstants} from './constants/userConstants';
 import {connect} from 'react-redux';
+
+import PushNotification from 'react-native-push-notification';
 function CustomDrawerContent(props) {
   const {navigation, userDetails, loggedout} = props;
 
+  console.log(userDetails);
   const onLogOut = async () => {
-    console.log(userDetails.acount_type);
+    console.log(userDetails, 'jjjkhikj');
+    // PushNotification.unsubscribeFromTopic(userDetails.uid);
     const {error} = await userAuthActions.signOut(userDetails.acount_type);
-    if (error) alert('Something Went Wrong');
-    else {
+    if (error) {
+    } else {
       loggedout();
       navigation.reset({
         index: 0,

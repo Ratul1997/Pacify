@@ -26,6 +26,7 @@ import messaging from '@react-native-firebase/messaging';
 import {store, pReducer} from './src/reducers';
 import PushController from './src/PushController';
 const App = () => {
+  console.disableYellowBox = true;
   useEffect(() => {
     const unsubscribe = messaging().onMessage(async remoteMessage => {
       // alert(remoteMessage.data.content);

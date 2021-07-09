@@ -13,6 +13,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import axios from 'axios';
 import ActivityIndicatorComponent from '../../common/ActivityIndicatorComponent';
+import {calculation} from '../../helpers';
 function CompletedPayment({navigation, userDetails}) {
   const [patientList, setPatientList] = useState([]);
   useEffect(() => {
@@ -52,6 +53,7 @@ function CompletedPayment({navigation, userDetails}) {
   };
 
   const renderItem = ({item, index}) => {
+    const date = calculation.convertDatetoString(item.time);
     return (
       <View
         style={{
@@ -88,6 +90,9 @@ function CompletedPayment({navigation, userDetails}) {
         <View style={{width: '60%'}}>
           <Text>{item.name}</Text>
           <Text>{item.profession}</Text>
+          <Text>
+            {date.dateString} at {date.time}
+          </Text>
         </View>
         <View
           style={{

@@ -48,6 +48,7 @@ import CompletePayment from './component/PatientProfile/CompletePayment';
 import VideoCall from './component/VideoCall/VideoCall';
 import DocHisotory from './component/DoctorProfile/DocHisotory';
 import EditProfile from './component/DoctorProfile/EditProfile';
+import EditProfilePatient from './component/PatientProfile/EditProfilePatient';
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 const Tab = createBottomTabNavigator();
@@ -71,6 +72,19 @@ function PatientProfile() {
     </Stack.Navigator>
   );
 }
+function PatientAccountStack() {
+  return (
+    <Stack.Navigator
+      initialRouteName="PatientAccount"
+      screenOptions={{
+        headerShown: false,
+        gestureEnabled: true,
+      }}>
+      <Stack.Screen name="PatientAccount" component={PatientAccount} />
+      <Stack.Screen name="EditProfilePat" component={EditProfilePatient} />
+    </Stack.Navigator>
+  );
+}
 function PatientTab() {
   return (
     <Tab.Navigator
@@ -91,7 +105,7 @@ function PatientTab() {
       />
       <Tab.Screen
         name="Account"
-        component={PatientAccount}
+        component={PatientAccountStack}
         options={{
           tabBarLabel: 'Profile',
           tabBarIcon: ({color, size}) => (

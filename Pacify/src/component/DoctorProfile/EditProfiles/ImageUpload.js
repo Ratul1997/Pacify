@@ -11,7 +11,7 @@ import ActivityIndicatorComponent from '../../../common/ActivityIndicatorCompone
 import {patientActions} from '../../../actions';
 import {userConstants} from '../../../constants/userConstants';
 
-function ImageUpload({userDetails, updateDetails}) {
+function ImageUpload({userDetails, updateDetails,type}) {
   const [singleFile, setSingleFile] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const selectFile = async () => {
@@ -75,6 +75,7 @@ function ImageUpload({userDetails, updateDetails}) {
             photo_url: url + responseJson.data[0],
           };
           const {error} = await patientActions.updateUserInfo(data);
+
           updateDetails(data);
           alert('Upload Successful');
         } else {
@@ -103,9 +104,9 @@ function ImageUpload({userDetails, updateDetails}) {
           width: normalize(100),
           borderRadius: normalize(50),
         }}
-        PlaceholderContent={
-          <ActivityIndicatorComponent size="small" color="green" />
-        }
+        // PlaceholderContent={
+        //   <ActivityIndicatorComponent size="small" color="green" />
+        // }
         placeholderStyle={{
           height: normalize(100),
           width: normalize(100),
